@@ -15,5 +15,6 @@
         ".micropy\\BradenM-micropy-stubs-e1b8ce6\\frozen",
         ".micropy\\BradenM-micropy-stubs-3cc928b\\stubs",
         ".micropy\\final"
-    ]
+    ],
+    "python.languageServer": "Microsoft"
 }
