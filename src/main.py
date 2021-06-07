@@ -30,7 +30,7 @@ In4.value(0)
 """
 
 button_left = Pin(23, Pin.IN, Pin.PULL_UP)
-while button_left.value() == 0:
+while button_left.value() == 0:  # while the button is pressed it spins (for now has to start pressed)
     for i in A_CLOCK:
         In1.value(i[0])
         In2.value(i[1])
