@@ -6,7 +6,7 @@ x = 0  # control variable
 steps = 0  # steps counter
 voltas = 1
 speed = 2  # regulates the speed(the lower the faster)
-time_open_s = 3
+time_open_s = 5
 steps_gone = 0
 
 In1 = Pin(13, Pin.OUT)
@@ -37,28 +37,21 @@ def spin(sentido):
 def stop_go():
     global steps
     global steps_gone
-    global x
     global t
-    global time_open_s
 
     utime.sleep_ms(500)
-    if button_right.value() == 0 or button_left.value() == 0:
-        for j in range(int(steps - steps_gone)):
-            spin(CLOCK)
-            steps_gone += 1
-            if button_right.value() == 0 or button_left.value() == 0:
-                t = utime.time()
-                utime.sleep_ms(500)
-                stop_go()
 
-    if utime.time()-t == time_open_s:
-        for j in range(int(steps - steps_gone)):
-            spin(CLOCK)
-            steps_gone += 1
-            if button_right.value() == 0 or button_left.value() == 0:
-                t = utime.time()
-                utime.sleep_ms(500)
-                stop_go()
+    for j in range(int(steps-steps_gone)):
+        spin(CLOCK)
+        steps_gone += 1
+        if steps_gone == steps:
+            return None
+
+        if button_right.value() == 0 or button_left.value() == 0:
+            utime.sleep_ms(500)
+            return None
+
+    return None
 
 
 t = 0
@@ -84,19 +77,21 @@ while True:
             if button_right.value() == 1:
                 x = 1  # when released changes state
     while x == 1:
-        utime.sleep_ms(500)
         t = utime.time()
-        while steps - steps_gone != 0:
+        while steps != steps_gone:
             utime.sleep_ms(500)
-            stop_go()
+
+            if button_right.value() == 0 or button_left.value() == 0:
+                utime.sleep_ms(500)
+                stop_go()
+                t = utime.time()
+
+            if utime.time()-t == time_open_s:
+                stop_go()
+                t = utime.time()
 
         x = 0
         steps = 0
+        steps_gone = 0
 
 # https://components101.com/motors/28byj-48-stepper-motor
-
-
-"""
-for now i am facing a problem, for when the 'gate' is stoped while closing
-it dosent wait the especified time to start closing back again.
-"""
