@@ -10,10 +10,10 @@ speed = 2  # regulates the speed(the lower the faster)
 time_open_s = 5
 steps_gone = 0
 
-In1 = Pin(13, Pin.OUT)
-In2 = Pin(12, Pin.OUT)
-In3 = Pin(14, Pin.OUT)
-In4 = Pin(27, Pin.OUT)
+In1 = Pin(13, Pin.OUT)  # azul
+In2 = Pin(12, Pin.OUT)  # verde
+In3 = Pin(14, Pin.OUT)  # amarelo
+In4 = Pin(27, Pin.OUT)  # laranja
 
 A_CLOCK = [[0, 0, 0, 1], [0, 0, 1, 1], [0, 0, 1, 0], [0, 1, 1, 0], [
     0, 1, 0, 0], [1, 1, 0, 0], [1, 0, 0, 0], [1, 0, 0, 1]]  # Imputs for the 28BYJ-48 spin anticlockwise
