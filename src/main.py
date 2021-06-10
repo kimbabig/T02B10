@@ -40,8 +40,6 @@ def stop_go():
     global steps_gone
     global t
 
-    utime.sleep_ms(500)
-
     for j in range(int(steps-steps_gone)):
         spin(CLOCK)
         steps_gone += 1
@@ -72,8 +70,6 @@ while True:
                 spin(A_CLOCK)
                 steps += 1
                 if button_left.value() == 0 or button_right.value() == 0:  # if button pressed stops
-                    yellow_led.value(False)
-                    green_led.value(True)
                     break
             yellow_led.value(False)
             green_led.value(True)
