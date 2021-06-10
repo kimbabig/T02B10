@@ -58,35 +58,41 @@ def stop_go():
 t = 0
 button_right = Pin(22, Pin.IN, Pin.PULL_UP)
 button_left = Pin(19, Pin.IN, Pin.PULL_UP)
-red_led = Pin(5, Pin.IN, Pin.PULL_UP)
-yellow_led = Pin(9, Pin.IN, Pin.PULL_UP)
-green_led = Pin(10, Pin.IN, Pin.PULL_UP)
+red_led = Pin(5, Pin.OUT)
+yellow_led = Pin(9, Pin.OUT)
+green_led = Pin(10, Pin.OUT)
 
 while True:
     while x == 0:
-        y = 0
+        red_led.value(True)
         if button_left.value() == 0:  # when left button pressed opens the gate fully
-            y = 1
             utime.sleep_ms(500)  # small delay to start spinning
+            red_led.value(False)
+            yellow_led.value(True)
             for j in range(int(voltas*509)):
                 spin(A_CLOCK)
                 steps += 1
-                if button_left.value() == 0:  # if left button pressed stops
+                if button_left.value() == 0 or button_right.value() == 0:  # if button pressed stops
+                    yellow_led.value(False)
+                    green_led.value(True)
                     break
-
+            yellow_led.value(False)
+            green_led.value(True)
         x = 1
 
         while button_right.value() == 0:        # while the right button is pressed it opens
-            y = 1
+            red_led.value(False)
+            yellow_led.value(True)
             spin(A_CLOCK)
             steps += 1
             if button_right.value() == 1:
                 x = 1  # when released changes state
+                yellow_led.value(False)
+                green_led.value(True)
+
     while x == 1:
-        y = 0
         t = utime.time()
         while steps != steps_gone:
-            y = 1
             utime.sleep_ms(500)
 
             if button_right.value() == 0 or button_left.value() == 0:
