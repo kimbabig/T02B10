@@ -3,12 +3,11 @@
 from machine import Pin
 import utime
 x = 0  # control variable
-y = 0  # control variabel
 steps = 0  # steps counter
-voltas = 1
+voltas = 1  # number of full turns to fully open
 speed = 2  # regulates the speed(the lower the faster)
-time_open_s = 5
-steps_gone = 0
+time_open_s = 5  # time to remain open before closing automatically
+steps_gone = 0  # number of steps already closed
 
 In1 = Pin(13, Pin.OUT)  # azul
 In2 = Pin(12, Pin.OUT)  # verde
@@ -22,7 +21,7 @@ CLOCK = [[1, 0, 0, 1], [1, 0, 0, 0], [1, 1, 0, 0], [0, 1, 0, 0], [
     0, 1, 1, 0], [0, 0, 1, 0], [0, 0, 1, 1], [0, 0, 0, 1]]  # Imputs for the 28BYJ-48 spin clockwise
 
 
-def spin(sentido):
+def spin(sentido):  # funtion that makes the 28BYJ-48 spin
     for i in sentido:
         In1.value(i[0])
         In2.value(i[1])
@@ -35,7 +34,7 @@ def spin(sentido):
     In4.value(0)
 
 
-def stop_go():
+def stop_go():      # function to control the closing
     global steps
     global steps_gone
     global t
@@ -56,6 +55,7 @@ def stop_go():
 t = 0
 button_right = Pin(22, Pin.IN, Pin.PULL_UP)
 button_left = Pin(19, Pin.IN, Pin.PULL_UP)
+
 red_led = Pin(5, Pin.OUT)
 yellow_led = Pin(9, Pin.OUT)
 green_led = Pin(10, Pin.OUT)
@@ -63,9 +63,10 @@ green_led = Pin(10, Pin.OUT)
 while True:
     while x == 0:
         if button_left.value() == 0:  # when left button pressed opens the gate fully
-            utime.sleep_ms(500)  # small delay to start spinning
             red_led.value(False)
             yellow_led.value(True)
+            # small delay to start spinning to avoid double button press detection
+            utime.sleep_ms(500)
             for j in range(int(voltas*509)):
                 spin(A_CLOCK)
                 steps += 1
@@ -89,11 +90,10 @@ while True:
         t = utime.time()
         while steps != steps_gone:
             utime.sleep_ms(500)
-
             if button_right.value() == 0 or button_left.value() == 0:
-                utime.sleep_ms(500)
                 yellow_led.value(True)
                 green_led.value(False)
+                utime.sleep_ms(500)
                 stop_go()
                 yellow_led.value(False)
                 if steps != steps_gone:
@@ -113,5 +113,3 @@ while True:
         red_led.value(True)
         steps = 0
         steps_gone = 0
-
-# https://components101.com/motors/28byj-48-stepper-motor
