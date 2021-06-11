@@ -1,4 +1,4 @@
-# boot.py - - runs on boot-up
+# ligh signal of booting up
 from machine import Pin
 import utime
 
@@ -23,7 +23,7 @@ red_led.value(True)
 yellow_led.value(True)
 green_led.value(True)
 utime.sleep_ms(500)
-while x < 5:
+while x < 5:  # x has to be odd
     red_led.value(not red_led.value())
     yellow_led.value(not yellow_led.value())
     green_led.value(not green_led.value())
