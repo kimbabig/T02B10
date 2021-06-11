@@ -113,5 +113,3 @@ while True:
         red_led.value(True)
         steps = 0
         steps_gone = 0
-
-# https://components101.com/motors/28byj-48-stepper-motor
