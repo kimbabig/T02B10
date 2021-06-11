@@ -63,9 +63,9 @@ green_led = Pin(10, Pin.OUT)
 while True:
     while x == 0:
         if button_left.value() == 0:  # when left button pressed opens the gate fully
-            utime.sleep_ms(500)  # small delay to start spinning
             red_led.value(False)
             yellow_led.value(True)
+            utime.sleep_ms(500)  # small delay to start spinning
             for j in range(int(voltas*509)):
                 spin(A_CLOCK)
                 steps += 1
@@ -89,11 +89,10 @@ while True:
         t = utime.time()
         while steps != steps_gone:
             utime.sleep_ms(500)
-
             if button_right.value() == 0 or button_left.value() == 0:
-                utime.sleep_ms(500)
                 yellow_led.value(True)
                 green_led.value(False)
+                utime.sleep_ms(500)
                 stop_go()
                 yellow_led.value(False)
                 if steps != steps_gone:
