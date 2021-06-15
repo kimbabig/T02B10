@@ -1,6 +1,7 @@
+#Projeto EDM 2020/2021
 # T02B10: Controlo de um motor passo-a-passo 
-- Nome do aluno 1: Eduardo Rodrigues
-- Nome do aluno 2: Sara Barros
+- Eduardo Rodrigues
+- Sara Barros
 
 ## Sumário
 * [Secção 1](#tag_sec_um)
