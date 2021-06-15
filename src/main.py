@@ -5,7 +5,7 @@ import utime
 x = 0  # control variable
 steps = 0  # steps counter
 voltas = 1  # number of full turns to fully open
-speed = 2  # regulates the speed(the lower the faster)
+speed = 5  # regulates the speed(the lower the faster)
 time_open_s = 5  # time to remain open before closing automatically
 steps_gone = 0  # number of steps already closed
 
