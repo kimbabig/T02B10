@@ -73,9 +73,10 @@ A variável *x* controla o estado em que se encontra o ''portão'':
 - fechado/a abrir --->   x = 0
 - aberto/ a fechar --->  x = 1
 
-*steps* e *steps_gone* recolhe informação sobre quantos passos é que o portão percorreu ou quantos passos é que o portão já fechou, respetivamente.
+*steps* e *steps_gone* recolhe informação sobre quantos passos é que o portão abriu e quantos passos é que o portão já fechou, respetivamente.
 
-Insere-se um valor *voltas* que corresponde às voltas completas que se deseja que o motor complete até que se considere totalmente 'aberto'.
+
+Insere-se um valor *voltas* que corresponde às voltas completas que se deseja que o motor realize até que se considere totalmente 'aberto'.
 Pode-se controlar a velocidade do motor inserindo um valor inteiro em *speed*, sendo o mais rápido possível com o valor 1.
 *time_open_s* regula o tempo que o ''portão'' permanece aberto antes de fechar automaticamente (em segundos).
 
@@ -127,11 +128,13 @@ def stop_go():      # function to control the closing
     return None
 ```
 #### Ciclo de Funcionamento
-Como referido anteriormente, o estado do ''portão'' vai ser controlado pela variável **x**. Quando x tem o valor 0, o portão está fechado ou a abrir. Quando x tem o valor 1 o portão está aberto ou a fechar.
+Como referido anteriormente, o estado do ''portão'' vai ser controlado pela variável **x**. Quando x tem o valor 0, o portão está fechado ou a abrir. 
+Quando x tem o valor 1 o portão está aberto ou a fechar.
+Ao iniciar o programa, assume-se a posição de fechado, ou seja, x tem valor 0.
 
 Quando **x = 0**:
 
-- Se for premido o botão esquerdo: o portão abre totalmente no sentido A_CLOCK e, no final do movimento, passa agora para o estado x = 1. Se durante o movimento for premido um dos botões, o portão para.
+- Se for premido o botão esquerdo: o portão abre totalmente no sentido A_CLOCK e, no final do movimento, passa agora para o estado x = 1. Se durante o movimento for premido qualquer um dos botões, o portão para.
 - Enquanto o botão direito estiver premido, o portão abre. Quando se larga o botão, o movimento interrompe-se e passa-se para o estado x = 1.
 ```python
 while x == 0:
@@ -162,7 +165,8 @@ while x == 0:
 Quando **x = 1**:
 
 - O portão fica aberto durante *time_open_s* segundos e depois executa o movimento de fecho (função *stop_go*).
-- Se antes disso, um dos botões for premido, o portão começa a fechar.
+- Se antes disso um dos botões for premido, o portão começa a fechar.
+- Como definido na função *stop_go*, quando o botão direito ou esquerdo for premido, o movimento é interrompido.
 - Quando o número de passos que o portão fechou for igual ao número de passos que o portão abriu (quando *steps_gone* for igual a *steps*), o estado volta a ser x = 0, o led vermelho acende e as variáveis *step* e *step_gone* resetam-se, completando-se assim um ciclo de funcionamento.
   
 ```python
@@ -199,3 +203,13 @@ Quando **x = 1**:
 
 
 ## <a name="tag_sec_4"></a> Conclusão
+
+Neste projeto alcançou-se o objetivo de simular o comportamento de um portão, controlando um motor passo-a-passo através do microcontrolador ESP32. Programou-se também a placa de botões e LEDs de forma a controlar o motor e a visualizar o seu estado. Para realizar o trabalho foi utilizado o software Visual Studio Code e programou-se em micropython.
+
+O projeto funciona da seguinte forma:
+
+Pressionando uma vez o botão esquerdo, dá-se início a um ciclo de abertura e fecho do portão (com um certo tempo de paragem *times_gone_s* quando aberto). A qualquer momento deste ciclo, o movimento é interrompido ao pressionar o botão direito ou esquerdo.
+
+Pressionando continuamente o botão direito, o portão abre até que se largue o botão. Executa depois o movimento de fecho que pode ser novamente interrompido ao pressionar qualquer botão.
+
+É ainda possível escolher a velocidade do motor e o tempo que este permanece ''aberto'' antes de começar a fechar.
