@@ -37,17 +37,21 @@ Este motor consiste em quatro bobinas posicionadas à volta do motor.
 ![Getting Started](imagens/motorpin.png)
 
 Ativando as bobinas numa certa sequência, é possível controlar o movimento do motor. Na seguinte tabela tem-se a sequência necessária para um movimento de rotação no sentido horário:
+
 ![Getting Started](imagens/table.jpg)
 
 #### Ligações com controlador e a placa ESP32 
 
 O motor é ligado a um controlador ULN2003 que por sua vez estabelece a ligação com a placa ESP32 e a fonte de alimentação, conforme a seguinte figura:
+
  ![Getting Started](imagens/mont.jpg)
 
 #### Botões e LEDs
 
 Os botões e LEDs usados no projeto foram ligados da maneira convencional usada durante as aulas, conforme o esquema seguinte:
+
 ![Getting Started](imagens/pins.jpg)
+
 ## <a name="tag_sec_3"></a> Código e Funcionamento
 
 #### Significado dos LEDs
