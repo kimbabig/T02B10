@@ -1,4 +1,5 @@
-#Projeto EDM 2020/2021
+Projeto EDM 2020/2021
+======
 # T02B10: Controlo de um motor passo-a-passo 
 - Eduardo Rodrigues
 - Sara Barros
