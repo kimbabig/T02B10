@@ -11,6 +11,7 @@ Projeto EDM 2020/2021
 * [Componentes e Montagem](#tag_sec_2)
 * [Código e Funcionamento](#tag_sec_3)
 * [Conclusão](#tag_sec_4)
+* [Bibliografia](#tag_sec_5)
 
 
 
@@ -217,3 +218,16 @@ Pressionando uma vez o botão esquerdo, dá-se início a um ciclo de abertura e 
 Pressionando continuamente o botão direito, o portão abre até que se largue o botão. Executa depois o movimento de fecho que pode ser novamente interrompido ao pressionar qualquer botão.
 
 É ainda possível escolher a velocidade do motor e o tempo que este permanece ''aberto'' antes de começar a fechar.
+
+
+## <a name="tag_sec_5"></a> Bibliografia
+
+[1] Espressif systems,"ESP32-PICO-D4 Datasheet", ESP32-PICo-D4, version 1.7, 2019 
+
+[2] Kiatronics, "5V Stepping Motor", 24BYJ48 datasheet
+
+[3] H.S. Mendonça,"EDM 2020/2021", Available: https://paginas.fe.up.pt/~hsm/docencia/edm/
+
+[4] Components101 (2018, Mar. 2), "28BYJ-48 - 5V Stepper Motor", Available:https://components101.com/motors/28byj-48-stepper-motor
+
+[5]Damien P. George, Paul Sokolovsky, and contributors(2014-2021), "The MicroPython Documentation", Available:https://docs.micropython.org/en/latest/library/utime.html?fbclid=IwAR2pywxyYV57DHgPT-s0EclX6w29ULdilXAdwbuxKzHeYc0DkRaW6L0XOUo 
