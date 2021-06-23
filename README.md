@@ -68,8 +68,8 @@ Quando o portão se encontra aberto, acende-se o led verde.
 ```python
 x = 0  # control variable
 steps = 0  # steps counter
-voltas = 1  # number of full turns to fully open
-speed = 2  # regulates the speed(the lower the faster)
+voltas = 1.0  # number of turns to fully open (can be a float)
+speed = 2  # regulates the speed(the lower the faster-int)
 time_open_s = 5  # time to remain open before closing automatically
 steps_gone = 0  # number of steps already closed
 ```
