@@ -231,3 +231,5 @@ Pressionando continuamente o botão direito, o portão abre até que se largue o
 [4] Components101 (2018, Mar. 2), "28BYJ-48 - 5V Stepper Motor", Available:https://components101.com/motors/28byj-48-stepper-motor
 
 [5] Damien P. George, Paul Sokolovsky, and contributors(2014-2021), "The MicroPython Documentation", Available:https://docs.micropython.org/en/latest/library/utime.html?fbclid=IwAR2pywxyYV57DHgPT-s0EclX6w29ULdilXAdwbuxKzHeYc0DkRaW6L0XOUo 
+
+[6] Toshiba, ULN2003APG datasheet, Available:https://datasheet.lcsc.com/szlcsc/ULN2004APG_C14336.pdf
